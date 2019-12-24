@@ -65,7 +65,7 @@ public class Dashboard extends JFrame {
 				setLocation(cordinateX-mouseX, cordinateY-mouseY);
 			}
 		});
-		contentPane.setBackground(Color.DARK_GRAY);
+		contentPane.setBackground(new Color(64, 64, 64));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -79,7 +79,7 @@ public class Dashboard extends JFrame {
 		
 		JLabel lblAMorseCode = new JLabel("A Morse Code Translator");
 		lblAMorseCode.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAMorseCode.setForeground(Color.CYAN);
+		lblAMorseCode.setForeground(new Color(0, 255, 255));
 		lblAMorseCode.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
 		lblAMorseCode.setBounds(213, 88, 227, 22);
 		contentPane.add(lblAMorseCode);
@@ -122,6 +122,9 @@ public class Dashboard extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("Morse to English Clicked!");
+				Morse_English me = new Morse_English();
+				me.setVisible(true);
+				dispose();
 			}
 		});
 		btnMorseCodeTo.setForeground(Color.BLACK);
@@ -129,6 +132,12 @@ public class Dashboard extends JFrame {
 		btnMorseCodeTo.setBackground(Color.WHITE);
 		btnMorseCodeTo.setBounds(197, 266, 265, 47);
 		contentPane.add(btnMorseCodeTo);
+		
+		JLabel lblMadeByPerisetla = new JLabel("BY PERISETLA HARI NAGA SAI");
+		lblMadeByPerisetla.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
+		lblMadeByPerisetla.setForeground(Color.WHITE);
+		lblMadeByPerisetla.setBounds(442, 426, 208, 14);
+		contentPane.add(lblMadeByPerisetla);
 		
 		setUndecorated(true);
 		setLocationRelativeTo(null);

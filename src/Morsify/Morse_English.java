@@ -17,10 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
-public class English_Morse_Dashboard extends JFrame {
+public class Morse_English extends JFrame {
 
 	/**
 	 * 
@@ -37,7 +35,7 @@ public class English_Morse_Dashboard extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					English_Morse_Dashboard frame = new English_Morse_Dashboard();
+					Morse_English frame = new Morse_English();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +47,7 @@ public class English_Morse_Dashboard extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public English_Morse_Dashboard() {
+	public Morse_English() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 715, 465);
 		contentPane = new JPanel();
@@ -93,44 +91,39 @@ public class English_Morse_Dashboard extends JFrame {
 		lblX.setBounds(681, 11, 24, 14);
 		contentPane.add(lblX);
 		
-		JTextArea English_textArea = new JTextArea();
-		English_textArea.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-			}
-		});
-		English_textArea.setLineWrap(true);
-		English_textArea.setWrapStyleWord(true);
-		English_textArea.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-		English_textArea.setBounds(30, 95, 654, 134);
-		contentPane.add(English_textArea);
-		
-		JScrollPane scrollPane = new JScrollPane(English_textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setBounds(30, 95, 654, 134);
-		contentPane.add(scrollPane);
-		
 		JTextArea Morse_textArea = new JTextArea();
 		Morse_textArea.setLineWrap(true);
 		Morse_textArea.setWrapStyleWord(true);
 		Morse_textArea.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
-		Morse_textArea.setBounds(30, 289, 654, 134);
+		Morse_textArea.setBounds(30, 96, 654, 134);
 		contentPane.add(Morse_textArea);
 		
-		JScrollPane scrollPane1 = new JScrollPane(Morse_textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane1.setBounds(31, 297, 654, 134);
+		JScrollPane scrollPane = new JScrollPane(Morse_textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setBounds(30, 95, 654, 134);
+		contentPane.add(scrollPane);
+		
+		JTextArea English_textArea = new JTextArea();
+		English_textArea.setLineWrap(true);
+		English_textArea.setWrapStyleWord(true);
+		English_textArea.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+		English_textArea.setBounds(30, 289, 654, 134);
+		contentPane.add(English_textArea);
+		
+		JScrollPane scrollPane1 = new JScrollPane(English_textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane1.setBounds(29, 300, 654, 134);
 		contentPane.add(scrollPane1);
 		
-		JLabel lblEnglishText = new JLabel("English Text");
-		lblEnglishText.setForeground(Color.WHITE);
-		lblEnglishText.setFont(new Font("Bahnschrift", Font.BOLD, 18));
-		lblEnglishText.setBounds(30, 62, 279, 22);
-		contentPane.add(lblEnglishText);
+		JLabel lblMorseText = new JLabel("Morse Code");
+		lblMorseText.setForeground(Color.WHITE);
+		lblMorseText.setFont(new Font("Bahnschrift", Font.BOLD, 18));
+		lblMorseText.setBounds(30, 62, 279, 22);
+		contentPane.add(lblMorseText);
 		
-		JLabel lblMorseCode = new JLabel("Morse Code");
-		lblMorseCode.setForeground(Color.WHITE);
-		lblMorseCode.setFont(new Font("Bahnschrift", Font.BOLD, 18));
-		lblMorseCode.setBounds(27, 265, 279, 22);
-		contentPane.add(lblMorseCode);
+		JLabel lblEnglishCode = new JLabel("English Text");
+		lblEnglishCode.setForeground(Color.WHITE);
+		lblEnglishCode.setFont(new Font("Bahnschrift", Font.BOLD, 18));
+		lblEnglishCode.setBounds(27, 265, 279, 22);
+		contentPane.add(lblEnglishCode);
 		
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.addMouseListener(new MouseAdapter() {
@@ -150,85 +143,87 @@ public class English_Morse_Dashboard extends JFrame {
 		JButton btnTranslate = new JButton("Translate");
 		btnTranslate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String s = English_textArea.getText();
+				String s = Morse_textArea.getText();
 				
 				// translateToMorse tm = new translateToMorse();
-				String englishText = s.toLowerCase();
-				String output = new String(englishText);
+				String morseText = s.toLowerCase();
+				String output = new String(morseText);
 				//	System.out.println(englishString());
+				String[] letters = morseText.split("\\s");
 				output = "";
-					for(int i=0; i<englishText.length(); i++) {	
-						System.out.print(translateMorse(englishText.charAt(i)));
-						System.out.print(" ");
+					for(String m:letters) {	
 						
-						output = output + translateMorse(englishText.charAt(i)) + " ";
-						
-						
+						output = output + translateMorse(m);
 						
 					}
 					
-					Morse_textArea.setText(output);
+					English_textArea.setText(output);
 				
 			}
 			
-			public String translateMorse(char e) {
-				switch(e) {
+			public String translateMorse(String l) {
+				switch(l) {
 				
-				case 'a': return ".-";
+				case ".-": return "A";
 				
-				case 'b': return "-...";
+				case "-...": return "B";
 				
-				case 'c': return "-.-.";
+				case "-.-.": return "C";
 				
-				case 'd': return "-..";
+				case "-..": return "D";
 				
-				case 'e': return ".";
+				case ".": return "E";
 				
-				case 'f': return "..-.";
+				case "..-.": return "F";
 				
-				case 'g': return "--.";
+				case "--.": return "G";
 			
-				case 'h': return "....";
+				case "....": return "H";
 				
-				case 'i': return "..";
+				case "..": return "I";
 				
-				case 'j': return ".---";
+				case ".---": return "J";
 				
-				case 'k': return "-.-";
+				case "-.-": return "K";
 				
-				case 'l': return ".-..";
+				case ".-..": return "L";
 				
-				case 'm': return "--";
+				case "--": return "M";
 				
-				case 'n': return "-.";
+				case "-.": return "N";
 				
-				case 'o': return "---";
+				case "---": return "0";
 				
-				case 'p': return ".--.";
+				case ".--.": return "P";
 				
-				case 'q': return "--.-";
+				case "--.-": return "Q";
 				
-				case 'r': return ".-.";
+				case ".-.": return "R";
 				
-				case 's': return "...";
+				case "...": return "S";
 				
-				case 't': return "-";
+				case "-": return "T";
 				
-				case 'u': return "..-";
+				case "..-": return "U";
 				
-				case 'v': return "...-";
+				case "...-": return "V";
 				
-				case 'w': return ".--";
+				case ".--": return "W";
 				
-				case 'x': return "-..-";
+				case "-..-": return "X";
 				
-				case 'y': return "-.--";
+				case "-.--": return "Y";
 				
-				case 'z': return "--..";
+				case "--..": return "Z";
 				
-				case ' ': return " / ";
+				case " ": return " ";
 				
-				default: return "Please Enter a Valid String!";
+				case "   ": return "    ";
+				
+				case "/": return " ";
+
+				default : return "";
+				
 				}
 		}
 		});
@@ -255,8 +250,15 @@ public class English_Morse_Dashboard extends JFrame {
 		test_label.setBounds(129, 240, 245, 31);
 		contentPane.add(test_label);
 		
+		JLabel lblPleaseAddA = new JLabel("Please add a  space after each letter and \" / \" after each word.");
+		lblPleaseAddA.setForeground(Color.WHITE);
+		lblPleaseAddA.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+		lblPleaseAddA.setBounds(235, 69, 449, 14);
+		contentPane.add(lblPleaseAddA);
+		
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 
 	}
 }
+
