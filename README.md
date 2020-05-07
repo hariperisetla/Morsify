@@ -3,5 +3,8 @@ This is Morsify. A morse code translator made in java 1.8.0. With this applicati
 
 Recommended System Requirements: Java 1.8.0
 
-To execute directly without downloading the code, just download the Morsify 1.0.exe from the root directory. After the download just run the file.
-(No installation needed)
+Greatly inspired from the 2008 Nolan's flick Interstellar we bagan developing an application for Murphy cooper to understand the cryptic messages of her ghost. The tool can be used to decipher any kind of morse meesage and the vice-versa is also posible.
+
+Hope you guys out their use Morsify to decrypt your ghosts messages.
+
+Happy Morsing !!!
