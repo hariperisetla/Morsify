@@ -9,4 +9,10 @@ Hope you guys out there use Morsify to decrypt your ghosts messages.
 
 Happy Morsing !!!
 
-![Optional Text](../master/img/SplashScreen.bmp)
+![Splash Screen](../master/img/SplashScreen.bmp)
+
+![Home Screen](../master/img/home.jpg)
+
+![English to Morse Screen](../master/img/englishToMorse.jpg)
+
+![Morse to English Screen](../master/img/morseToEnglish.jpg)
