@@ -1,4 +1,5 @@
-# Morsify-A-Morse-Code-Translator
+# Morsify
+## A Morse Code Translator
 This is Morsify. A morse code translator made in java 1.8.0. With this application English Text can be converted to Morse code and Morse code can be converted to English Text.
 
 Recommended System Requirements: Java 1.8.0
